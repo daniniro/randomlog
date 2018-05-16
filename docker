@@ -1,0 +1,3 @@
+
+C:\Users\danin\IdeaProjects\randomlog>docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 -d randomlogger 
+ccc8b3ac0b231d0b43f9622a14da63e6c55f68a8d24e3ccbdec3274b192ad762
