@@ -1,2 +1,2 @@
 "# randomlog" 
-Generatore casuale di log (1 sec)
+Generatore casuale di log (1 sec). Output su stdout
