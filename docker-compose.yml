@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+    randomlogs:
+        image: robertodanini/randomlog
+        logging:
+            driver: "fluentd"
+            options:
+                fluentd-address: "localhost:24224"
