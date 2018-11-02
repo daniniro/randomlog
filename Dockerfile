@@ -4,6 +4,7 @@ COPY . /app
 RUN mvn package
 
 FROM openjdk:8-jre-alpine
+ENV LOG_CRON="0/1 * * * * ?"
 WORKDIR /app
 COPY --from=0 /app/target/randomlog-0.0.1-SNAPSHOT.jar /app
 ENTRYPOINT ["sh", "-c"]
