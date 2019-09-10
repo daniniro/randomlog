@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class LogEmitterConfiguration {
     @Bean
-    public LogEmitter logEmitter(){
-        return new LogEmitter();
+    public SLF4JLogEmitter logEmitter() {
+        return new SLF4JLogEmitter();
     }
 }

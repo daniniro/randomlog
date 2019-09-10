@@ -6,11 +6,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LogScheduler {
+    private LogEmitter SLF4JLogEmitter;
+
     @Autowired
-    private LogEmitter logEmitter;
+    public LogScheduler(LogEmitter emitter) {
+        this.SLF4JLogEmitter = emitter;
+    }
 
     @Scheduled(cron = "${scheduling.job.cron}")
-    public void schedule(){
-        logEmitter.randomLog();
+    public void schedule() {
+        SLF4JLogEmitter.randomLog();
     }
 }

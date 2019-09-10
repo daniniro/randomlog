@@ -1,5 +1,5 @@
 <configuration>
-    <property name="log.filename" value="/tmp/log.log" />
+    <property name="log.filename" value="/tmp/log.log"/>
     <contextName>${HOSTNAME}</contextName>
 
 
@@ -7,7 +7,8 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss z} [%contextName] host:%contextName | %-5level | %logger{36} | %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss z} [%contextName] host:%contextName | %-5level | %logger{36} | %msg%n
+            </pattern>
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
@@ -18,14 +19,15 @@
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
         <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss z} [%contextName] host:%contextName | %-5level | %logger{36} | %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss z} [%contextName] host:%contextName | %-5level | %logger{36} | %msg%n
+            </pattern>
         </encoder>
     </appender>
-    <logger name="com.aduno.randomlog.LogEmitter" level="debug">
-        <appender-ref ref="FILE" />
+    <logger name="com.aduno.randomlog.SLF4JLogEmitter" level="debug">
+        <appender-ref ref="FILE"/>
     </logger>
 
     <root level="debug">
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
