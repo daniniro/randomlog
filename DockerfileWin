@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/java/jdk:8u222-zulu-windowsservercore
+
+RUN powershell (new-object System.Net.WebClient).Downloadfile('http://www.pirbot.com/mirrors/apache/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.zip', 'C:\mvn.zip')
+RUN powershell (Expand-Archive -Path C:\mvn.zip -DestinationPath C:\)
+WORKDIR /app
+COPY . /app
+RUN C:\apache-maven-3.5.4\bin\mvn package
+
+FROM mcr.microsoft.com/java/jdk:8u222-zulu-windowsservercore
+ENV ELASTIC_URL=""
+ENV SPRING_PROFILE=default
+ENV ELK_METRICS_ENABLED=false
+WORKDIR /app
+COPY --from=0 /app/target/randomlog-0.0.1-SNAPSHOT.jar /app
+ENTRYPOINT ["cmd"]
+CMD ["java -jar randomlog-0.0.1-SNAPSHOT.jar --spring.profiles.active=$SPRING_PROFILE"]
